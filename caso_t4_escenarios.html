@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tema 4 · Escenarios</title>
+    <style>
+        :root {
+            --navy: #101d3b;
+            --blue: #2869d8;
+            --teal: #0b938c;
+            --ink: #24314b;
+            --muted: #61718c;
+            --bg: #f3f7fc;
+            --line: #dbe5f1
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font: 16px/1.55 system-ui, -apple-system, 'Segoe UI', sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 18px max(20px, calc((100vw - 1100px)/2));
+            font-weight: 750
+        }
+
+        .wrap {
+            max-width: 1100px;
+            padding: 24px 20px 70px;
+            margin: auto
+        }
+
+        .nav {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-bottom: 18px
+        }
+
+        .nav a {
+            font-size: 13px;
+            text-decoration: none;
+            color: #234e83;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            padding: 8px 11px
+        }
+
+        .nav a[aria-current=page] {
+            background: #dff5f0;
+            color: #065e58;
+            font-weight: 800
+        }
+
+        .hero {
+            background: linear-gradient(110deg, #152b57, #1e4e86 70%, #077e86);
+            padding: 32px;
+            border-radius: 19px;
+            color: white
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 4vw, 43px);
+            line-height: 1.15;
+            margin: 9px 0
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: #a9d9f8;
+            font-weight: 800
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--line);
+            padding: 24px;
+            border-radius: 15px;
+            margin-top: 17px;
+            box-shadow: 0 4px 18px #23385508
+        }
+
+        .card h2 {
+            margin: 0 0 12px;
+            color: var(--navy)
+        }
+
+        h3 {
+            color: var(--navy)
+        }
+
+        .notice {
+            border-left: 4px solid var(--teal);
+            padding: 12px 15px;
+            background: #edf8f5;
+            border-radius: 8px
+        }
+
+        .alert {
+            border-left: 4px solid #d49727;
+            padding: 12px 15px;
+            background: #fffaec;
+            border-radius: 8px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 13px
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 13px
+        }
+
+        .metric {
+            background: #f3f8fd;
+            padding: 17px;
+            border: 1px solid var(--line);
+            border-radius: 12px
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 26px;
+            color: #122b50
+        }
+
+        .metric span {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            font-size: 14px;
+            margin: 10px 0 5px
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #bac9da;
+            border-radius: 9px;
+            padding: 11px;
+            font: inherit;
+            background: white;
+            color: var(--ink)
+        }
+
+        textarea {
+            min-height: 95px;
+            resize: vertical
+        }
+
+        button,
+        .button {
+            border: 0;
+            border-radius: 9px;
+            background: var(--blue);
+            color: white;
+            padding: 12px 16px;
+            font: inherit;
+            font-weight: 750;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block
+        }
+
+        .secondary {
+            background: #e6eefb;
+            color: #234e83
+        }
+
+        .actions {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-top: 16px
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 14px
+        }
+
+        td,
+        th {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--line)
+        }
+
+        th {
+            background: #eaf3fd
+        }
+
+        .tablewrap {
+            overflow: auto;
+            max-height: 420px
+        }
+
+        .small {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .foot {
+            font-size: 12px;
+            color: var(--muted);
+            padding: 18px 0
+        }
+
+        .tag {
+            display: inline-block;
+            border-radius: 30px;
+            background: #e8f3ff;
+            padding: 6px 11px;
+            color: #234f77;
+            font-size: 13px
+        }
+
+        .live {
+            color: #116747;
+            font-weight: 800
+        }
+
+        .warning {
+            color: #94531e;
+            font-weight: 700
+        }
+
+        .prose {
+            max-width: 810px
+        }
+
+        svg.chart {
+            width: 100%;
+            height: 255px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fcfdff
+        }
+
+        a {
+            color: #2366ba
+        }
+
+        *:focus-visible {
+            outline: 3px solid #61b6e8;
+            outline-offset: 2px
+        }
+
+        @media(max-width:700px) {
+
+            .grid,
+            .grid3 {
+                grid-template-columns: 1fr
+            }
+
+            .card {
+                padding: 17px
+            }
+
+            .hero {
+                padding: 22px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>ANÁLISIS DE DATOS / TOMA DE DECISIONES · CASO DE INVENTARIOS</header>
+    <main class="wrap">
+        <nav class="nav" aria-label="Navegación de Tema 4"><a href="index.html">← Caso anterior</a><a
+                href="caso_inventarios_tema4.html">Inicio T4</a><a href="caso_t4_optimizacion.html">1 · Optimizar</a><a
+                href="caso_t4_escenarios.html" aria-current="page">2 · Escenarios</a><a href="caso_t4_defensa.html">3 ·
+                Defender</a><a href="Caso_Inventarios_Tema4_Optimizacion_Escenarios.xlsx" download>Excel T4 ↓</a></nav>
+        <section class="hero"><span class="eyebrow">Tema 4 · Técnicas de optimización y simulación avanzada</span>
+            <h1>Estación 2: ¿sigue funcionando nuestra decisión?</h1>
+            <p>Continuidad del caso de las 300 unidades · Maestría MAPS · CLARA</p>
+        </section>
+        <section class="card">
+            <h2>1. ¿Qué significa protegerse frente a la demanda?</h2>
+            <p>En las 47 semanas históricas, <strong>la media ≈ 295.19</strong>. Compare cuánto inventario se requeriría
+                si se toma como referencia la media, el percentil 85 o el 90.</p>
+            <div class="grid3">
+                <div class="metric"><span>Media histórica</span><strong id="mean">—</strong></div>
+                <div class="metric"><span>P85 histórico</span><strong id="p85">—</strong></div>
+                <div class="metric"><span>P90 histórico</span><strong id="p90">—</strong></div>
+            </div>
+            <p class="alert">P85 y P90 no son pronósticos garantizados. Preparar esas cantidades puede exceder el
+                presupuesto o el almacenamiento y disminuir el beneficio económico.</p>
+        </section>
+        <section class="card">
+            <h2>2. Tres condiciones de negocio, una decisión</h2>
+            <p>Seleccione dos cambios que podrían ocurrir a la vez. Los escenarios son supuestos para explorar
+                sensibilidad, no probabilidades pronosticadas.</p>
+            <div class="grid">
+                <div><label for="dchange">Variación de ventas (%)</label><select id="dchange">
+                        <option value="0">Escenario base · sin cambio</option>
+                        <option value="20">Alta demanda · +20 %</option>
+                        <option value="-15">Baja demanda · −15 %</option>
+                    </select></div>
+                <div><label for="cchange">Variación de costo de compra (%)</label><select id="cchange">
+                        <option value="0">Costo base</option>
+                        <option value="15">Estrés de costos · +15 %</option>
+                        <option value="30">Estrés intenso · +30 %</option>
+                    </select></div>
+            </div>
+            <p>Conservamos presupuesto £230, capacidad 360, precio £1.65 y recuperación £0.30 para que sea comparable.
+            </p>
+            <div class="actions"><button id="run">Analizar escenario</button></div>
+            <div class="grid3">
+                <div class="metric"><span>Óptimo libre en escenario</span><strong id="free">—</strong></div>
+                <div class="metric"><span>Óptimo restringido</span><strong id="rest">—</strong></div>
+                <div class="metric"><span>Beneficio restringido</span><strong id="b">—</strong></div>
+            </div>
+            <p id="state" class="small"></p>
+        </section>
+        <section class="card">
+            <h2>3. Comparación de políticas bajo el mismo escenario</h2>
+            <div class="tablewrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Política de inventario</th>
+                            <th>Beneficio promedio</th>
+                            <th>¿Factible con £230?</th>
+                            <th>Semanas con ventas superiores a Q</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rows"></tbody>
+                </table>
+            </div>
+            <p class="notice"><strong>Discusión:</strong> ¿La alternativa de beneficio esperado más alto también es la
+                más robusta? ¿Qué costos y datos faltantes deberían revisarse antes de implementarla?</p>
+        </section>
+        <section class="card">
+            <h2>4. Comparen decisiones con evidencia</h2><label for="text">¿Qué cantidad defenderían y qué parámetro
+                debería vigilar la empresa?</label><textarea id="text"
+                placeholder="Su argumento, evidencia y riesgo residual"></textarea>
+            <div class="actions"><button id="copy">Copiar conclusión</button><a class="button secondary"
+                    href="caso_t4_defensa.html">Ir al comité de decisiones →</a></div>
+            <p id="copied" class="small"></p>
+        </section>
+        <p class="foot">Fuente de ventas: UCI Machine Learning Repository, Online Retail, Daqing Chen (2015), CC BY 4.0,
+            DOI 10.24432/C5BW33. 47 semanas históricas del producto 20725. Precio, costos, recuperación, capacidad y
+            presupuesto son supuestos didácticos. Ventas no equivalen a demanda total.</p>
+    </main>
+    <script>"use strict"; const D = [418, 282, 128, 161, 347, 155, 249, 259, 155, 98, 268, 336, 517, 187, 275, 318, 154, 219, 470, 335, 424, 171, 565, 186, 218, 183, 293, 201, 415, 345, 583, 575, 373, 281, 192, 304, 299, 212, 228, 278, 383, 146, 234, 223, 526, 449, 256]; const $ = id => document.getElementById(id); const gbp = x => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(x); const dec = x => Number(x).toLocaleString('es-MX', { maximumFractionDigits: 2 }); function benefit(q, d, p, c, r) { return p * Math.min(q, d) + r * Math.max(q - d, 0) - c * q } function stats(ds, p, c, r, budget, capacity, qmin = 150, qmax = 550) { let all = []; for (let q = qmin; q <= qmax; q++) { let avg = ds.reduce((s, d) => s + benefit(q, d, p, c, r), 0) / ds.length; let prob = ds.filter(d => d > q).length / ds.length; let feasible = q * c <= budget + 1e-8 && q <= capacity; all.push({ q, avg, prob, cost: q * c, feasible }) } let free = all.reduce((a, b) => b.avg > a.avg + 1e-9 ? b : a); let allowed = all.filter(x => x.feasible); let best = allowed.length ? allowed.reduce((a, b) => b.avg > a.avg + 1e-9 ? b : a) : null; return { all, free, best } } function percentile(a, p) { let v = [...a].sort((x, y) => x - y); let index = (v.length - 1) * p, k = Math.floor(index), t = index - k; return v[k] + (v[Math.min(k + 1, v.length - 1)] - v[k]) * t } function getNum(id) { return Number($(id).value) } function draw(rows) { const svg = $('curve'); if (!svg) return; let sel = rows.filter(x => x.q % 5 === 0); let min = Math.min(...sel.map(x => x.avg)), max = Math.max(...sel.map(x => x.avg)); let toX = q => 40 + (q - 150) / 400 * 800, toY = v => 225 - (v - min) / (max - min || 1) * 195; let path = sel.map((r, i) => (i ? 'L' : 'M') + toX(r.q).toFixed(1) + ' ' + toY(r.avg).toFixed(1)).join(' '); svg.innerHTML = '<line x1="40" y1="225" x2="840" y2="225" stroke="#9eb3ca"/><path d="' + path + '" stroke="#2869d8" stroke-width="3" fill="none"/><text x="40" y="246" font-size="14" fill="#61718c">Q=150</text><text x="787" y="246" font-size="14" fill="#61718c">Q=550</text><text x="43" y="17" font-size="14" fill="#61718c">Beneficio medio (GBP)</text>' } function safe(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) } function downloadText(name, text) { let u = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' })); let a = document.createElement('a'); a.href = u; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(u), 500) } function numericInputs() { return { p: getNum('price'), c: getNum('cost'), r: getNum('salvage'), budget: getNum('budget'), capacity: getNum('capacity') } } function validate(x) { return Object.values(x).every(Number.isFinite) && x.p >= 0 && x.c > 0 && x.r >= 0 && x.budget >= 0 && x.capacity >= 0 } </script>
+    <script>(function () { let mean = D.reduce((a, b) => a + b, 0) / D.length; $('mean').textContent = dec(mean); $('p85').textContent = dec(percentile(D, .85)); $('p90').textContent = dec(percentile(D, .9)); function run() { let dchg = getNum('dchange') / 100, cchg = getNum('cchange') / 100, ds = D.map(d => Math.round(d * (1 + dchg))), cost = .85 * (1 + cchg), out = stats(ds, 1.65, cost, .3, 230, 360); $('free').textContent = out.free.q; $('rest').textContent = out.best ? out.best.q : 'Ninguno'; $('b').textContent = out.best ? gbp(out.best.avg) : '—'; $('state').textContent = 'Las ventas se transforman con redondeo al entero más cercano. El presupuesto sigue en £230; costo unitario = ' + gbp(cost) + '. Esta es una prueba de escenario, no nuevas observaciones.'; let choices = [250, 270, 293, 300, 360, 400]; $('rows').innerHTML = choices.map(q => { let v = out.all[q - 150]; return '<tr><td>' + q + ' unidades</td><td>' + gbp(v.avg) + '</td><td>' + (v.feasible ? 'Sí' : 'No') + '</td><td>' + dec(v.prob * 100) + ' %</td></tr>' }).join('') } function response() { return 'TEMA 4 · ESCENARIOS\nVentas: ' + $('dchange').selectedOptions[0].text + '\nCosto: ' + $('cchange').selectedOptions[0].text + '\nÓptimo restringido: ' + $('rest').textContent + '\nBeneficio: ' + $('b').textContent + '\nConclusión: ' + $('text').value } $('run').onclick = run; $('copy').onclick = async () => { try { await navigator.clipboard.writeText(response()); $('copied').textContent = 'Copiado para compartir en Teams.' } catch (e) { downloadText('tema4_escenarios.txt', response()); $('copied').textContent = 'TXT descargado para compartir.' } }; run() })();</script>
+</body>
+
+</html>

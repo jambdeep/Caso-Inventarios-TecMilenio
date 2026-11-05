@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Tema 4 · Comité</title>
+    <style>
+        :root {
+            --navy: #101d3b;
+            --blue: #2869d8;
+            --teal: #0b938c;
+            --ink: #24314b;
+            --muted: #61718c;
+            --bg: #f3f7fc;
+            --line: #dbe5f1
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            font: 16px/1.55 system-ui, -apple-system, 'Segoe UI', sans-serif;
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink)
+        }
+
+        header {
+            background: var(--navy);
+            color: white;
+            padding: 18px max(20px, calc((100vw - 1100px)/2));
+            font-weight: 750
+        }
+
+        .wrap {
+            max-width: 1100px;
+            padding: 24px 20px 70px;
+            margin: auto
+        }
+
+        .nav {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-bottom: 18px
+        }
+
+        .nav a {
+            font-size: 13px;
+            text-decoration: none;
+            color: #234e83;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            padding: 8px 11px
+        }
+
+        .nav a[aria-current=page] {
+            background: #dff5f0;
+            color: #065e58;
+            font-weight: 800
+        }
+
+        .hero {
+            background: linear-gradient(110deg, #152b57, #1e4e86 70%, #077e86);
+            padding: 32px;
+            border-radius: 19px;
+            color: white
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 4vw, 43px);
+            line-height: 1.15;
+            margin: 9px 0
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: #a9d9f8;
+            font-weight: 800
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--line);
+            padding: 24px;
+            border-radius: 15px;
+            margin-top: 17px;
+            box-shadow: 0 4px 18px #23385508
+        }
+
+        .card h2 {
+            margin: 0 0 12px;
+            color: var(--navy)
+        }
+
+        h3 {
+            color: var(--navy)
+        }
+
+        .notice {
+            border-left: 4px solid var(--teal);
+            padding: 12px 15px;
+            background: #edf8f5;
+            border-radius: 8px
+        }
+
+        .alert {
+            border-left: 4px solid #d49727;
+            padding: 12px 15px;
+            background: #fffaec;
+            border-radius: 8px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 13px
+        }
+
+        .grid3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 13px
+        }
+
+        .metric {
+            background: #f3f8fd;
+            padding: 17px;
+            border: 1px solid var(--line);
+            border-radius: 12px
+        }
+
+        .metric strong {
+            display: block;
+            font-size: 26px;
+            color: #122b50
+        }
+
+        .metric span {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            font-size: 14px;
+            margin: 10px 0 5px
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #bac9da;
+            border-radius: 9px;
+            padding: 11px;
+            font: inherit;
+            background: white;
+            color: var(--ink)
+        }
+
+        textarea {
+            min-height: 95px;
+            resize: vertical
+        }
+
+        button,
+        .button {
+            border: 0;
+            border-radius: 9px;
+            background: var(--blue);
+            color: white;
+            padding: 12px 16px;
+            font: inherit;
+            font-weight: 750;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block
+        }
+
+        .secondary {
+            background: #e6eefb;
+            color: #234e83
+        }
+
+        .actions {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-top: 16px
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 14px
+        }
+
+        td,
+        th {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid var(--line)
+        }
+
+        th {
+            background: #eaf3fd
+        }
+
+        .tablewrap {
+            overflow: auto;
+            max-height: 420px
+        }
+
+        .small {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        .foot {
+            font-size: 12px;
+            color: var(--muted);
+            padding: 18px 0
+        }
+
+        .tag {
+            display: inline-block;
+            border-radius: 30px;
+            background: #e8f3ff;
+            padding: 6px 11px;
+            color: #234f77;
+            font-size: 13px
+        }
+
+        .live {
+            color: #116747;
+            font-weight: 800
+        }
+
+        .warning {
+            color: #94531e;
+            font-weight: 700
+        }
+
+        .prose {
+            max-width: 810px
+        }
+
+        svg.chart {
+            width: 100%;
+            height: 255px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: #fcfdff
+        }
+
+        a {
+            color: #2366ba
+        }
+
+        *:focus-visible {
+            outline: 3px solid #61b6e8;
+            outline-offset: 2px
+        }
+
+        @media(max-width:700px) {
+
+            .grid,
+            .grid3 {
+                grid-template-columns: 1fr
+            }
+
+            .card {
+                padding: 17px
+            }
+
+            .hero {
+                padding: 22px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>ANÁLISIS DE DATOS / TOMA DE DECISIONES · CASO DE INVENTARIOS</header>
+    <main class="wrap">
+        <nav class="nav" aria-label="Navegación de Tema 4"><a href="index.html">← Caso anterior</a><a
+                href="caso_inventarios_tema4.html">Inicio T4</a><a href="caso_t4_optimizacion.html">1 · Optimizar</a><a
+                href="caso_t4_escenarios.html">2 · Escenarios</a><a href="caso_t4_defensa.html" aria-current="page">3 ·
+                Defender</a><a href="Caso_Inventarios_Tema4_Optimizacion_Escenarios.xlsx" download>Excel T4 ↓</a></nav>
+        <section class="hero"><span class="eyebrow">Tema 4 · Técnicas de optimización y simulación avanzada</span>
+            <h1>Estación 3: defender una decisión robusta</h1>
+            <p>Continuidad del caso de las 300 unidades · Maestría MAPS · CLARA</p>
+        </section>
+        <section class="card">
+            <h2>Comité ejecutivo de inventarios</h2>
+            <p>El objetivo no es presentar todas las fórmulas: es justificar una decisión que pueda llevarse a cabo y
+                reconocer los riesgos pendientes.</p>
+            <div class="grid">
+                <div><label for="team">Equipo</label><input id="team" placeholder="Ej. Equipo 2"><label for="q">Cantidad
+                        recomendada Q</label><input id="q" type="number" min="0" placeholder="Ej. 270"><label
+                        for="basis">¿Qué priorizamos?</label><select id="basis">
+                        <option value="Beneficio esperado">Beneficio esperado</option>
+                        <option value="Viabilidad presupuestaria">Viabilidad presupuestaria</option>
+                        <option value="Cobertura de ventas">Cobertura de ventas</option>
+                        <option value="Robustez ante estrés">Robustez ante estrés</option>
+                    </select></div>
+                <div><label for="evidence">Dos evidencias del Excel o las estaciones</label><textarea id="evidence"
+                        placeholder="Cifras y comparación de escenarios"></textarea><label for="risk">Un riesgo residual
+                        que permanece</label><textarea id="risk"
+                        placeholder="P. ej., ventas observadas pueden subestimar la demanda"></textarea></div>
+            </div><label for="condition">¿En qué condición revisaríamos nuestra decisión?</label><textarea
+                id="condition" placeholder="Ej. Si el costo crece 15% o aumenta la frecuencia de faltantes"></textarea>
+            <div class="actions"><button id="copy">Copiar ficha para Teams</button><button id="down"
+                    class="secondary">Descargar TXT</button></div>
+            <p id="msg" class="small" aria-live="polite"></p>
+        </section>
+        <section class="card">
+            <h2>Defensa oral: 90 segundos</h2>
+            <ol>
+                <li><strong>20 segundos:</strong> qué cantidad proponemos y bajo qué presupuesto.</li>
+                <li><strong>40 segundos:</strong> dos indicadores que sostienen la propuesta.</li>
+                <li><strong>30 segundos:</strong> riesgo residual y condición para cambiar la política.</li>
+            </ol>
+            <p class="notice"><strong>Pregunta docente:</strong> Si mañana sube el costo de compra, ¿qué cambiaría
+                primero: la solución óptima sin restricciones o la solución factible? Justifiquen con el modelo.</p>
+            <p class="alert">El texto se copia o descarga localmente. No se envía automáticamente a Teams, Excel ni al
+                profesor.</p>
+        </section>
+        <p class="foot">Fuente de ventas: UCI Machine Learning Repository, Online Retail, Daqing Chen (2015), CC BY 4.0,
+            DOI 10.24432/C5BW33. 47 semanas históricas del producto 20725. Precio, costos, recuperación, capacidad y
+            presupuesto son supuestos didácticos. Ventas no equivalen a demanda total.</p>
+    </main>
+    <script>"use strict"; const D = [418, 282, 128, 161, 347, 155, 249, 259, 155, 98, 268, 336, 517, 187, 275, 318, 154, 219, 470, 335, 424, 171, 565, 186, 218, 183, 293, 201, 415, 345, 583, 575, 373, 281, 192, 304, 299, 212, 228, 278, 383, 146, 234, 223, 526, 449, 256]; const $ = id => document.getElementById(id); const gbp = x => new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(x); const dec = x => Number(x).toLocaleString('es-MX', { maximumFractionDigits: 2 }); function benefit(q, d, p, c, r) { return p * Math.min(q, d) + r * Math.max(q - d, 0) - c * q } function stats(ds, p, c, r, budget, capacity, qmin = 150, qmax = 550) { let all = []; for (let q = qmin; q <= qmax; q++) { let avg = ds.reduce((s, d) => s + benefit(q, d, p, c, r), 0) / ds.length; let prob = ds.filter(d => d > q).length / ds.length; let feasible = q * c <= budget + 1e-8 && q <= capacity; all.push({ q, avg, prob, cost: q * c, feasible }) } let free = all.reduce((a, b) => b.avg > a.avg + 1e-9 ? b : a); let allowed = all.filter(x => x.feasible); let best = allowed.length ? allowed.reduce((a, b) => b.avg > a.avg + 1e-9 ? b : a) : null; return { all, free, best } } function percentile(a, p) { let v = [...a].sort((x, y) => x - y); let index = (v.length - 1) * p, k = Math.floor(index), t = index - k; return v[k] + (v[Math.min(k + 1, v.length - 1)] - v[k]) * t } function getNum(id) { return Number($(id).value) } function draw(rows) { const svg = $('curve'); if (!svg) return; let sel = rows.filter(x => x.q % 5 === 0); let min = Math.min(...sel.map(x => x.avg)), max = Math.max(...sel.map(x => x.avg)); let toX = q => 40 + (q - 150) / 400 * 800, toY = v => 225 - (v - min) / (max - min || 1) * 195; let path = sel.map((r, i) => (i ? 'L' : 'M') + toX(r.q).toFixed(1) + ' ' + toY(r.avg).toFixed(1)).join(' '); svg.innerHTML = '<line x1="40" y1="225" x2="840" y2="225" stroke="#9eb3ca"/><path d="' + path + '" stroke="#2869d8" stroke-width="3" fill="none"/><text x="40" y="246" font-size="14" fill="#61718c">Q=150</text><text x="787" y="246" font-size="14" fill="#61718c">Q=550</text><text x="43" y="17" font-size="14" fill="#61718c">Beneficio medio (GBP)</text>' } function safe(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])) } function downloadText(name, text) { let u = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' })); let a = document.createElement('a'); a.href = u; a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(u), 500) } function numericInputs() { return { p: getNum('price'), c: getNum('cost'), r: getNum('salvage'), budget: getNum('budget'), capacity: getNum('capacity') } } function validate(x) { return Object.values(x).every(Number.isFinite) && x.p >= 0 && x.c > 0 && x.r >= 0 && x.budget >= 0 && x.capacity >= 0 } </script>
+    <script>(function () { function report() { return 'FICHA EJECUTIVA · TEMA 4\nEquipo: ' + $('team').value + '\nCantidad recomendada: ' + $('q').value + '\nPrioridad: ' + $('basis').value + '\nEvidencias: ' + $('evidence').value + '\nRiesgo residual: ' + $('risk').value + '\nCondición de revisión: ' + $('condition').value } function ok() { if (!['team', 'q', 'evidence', 'risk', 'condition'].every(x => $(x).value.trim())) { $('msg').textContent = 'Completen equipo, cantidad, evidencia, riesgo y condición de revisión.'; return false } return true } $('copy').onclick = async () => { if (!ok()) return; try { await navigator.clipboard.writeText(report()); $('msg').textContent = 'Copiado; peguen su ficha en el chat de Teams.' } catch (e) { downloadText('ficha_tema4.txt', report()); $('msg').textContent = 'El navegador bloqueó el portapapeles; se descargó un TXT.' } }; $('down').onclick = () => { if (ok()) { downloadText('ficha_tema4.txt', report()); $('msg').textContent = 'Ficha descargada.' } } })();</script>
+</body>
+
+</html>
